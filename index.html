@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBuzz - College Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Decorators -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Login View -->
+    <main id="login-view" class="view active-view">
+        <div class="glass-card login-container">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h1>Gnc News</h1>
+            </div>
+            <p class="subtitle">Your private college network.</p>
+            
+            <div id="login-form">
+                <button type="button" id="google-login-btn" class="btn btn-primary full-width" style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #fff; color: #757575; border: 1px solid #ddd;">
+<i class="fa-brands fa-google"></i>                    Sign in with Google
+                </button>
+            </div>
+       
+        </div>
+    </main>
+
+    <script type="module" src="shared.js"></script>
+    <script type="module" src="login.js"></script>
+</body>
+</html>

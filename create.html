@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBuzz - Create</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="mobile-top-bar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>CampusBuzz</h2>
+        </div>
+        <button class="btn-icon logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </div>
+
+    <div id="app-view" class="view active-view">
+        <nav class="glass-nav">
+            <div class="nav-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>CampusBuzz</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item" data-target="channel-feed" data-channel="GNC News">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>GNC News</span>
+                </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Cultural">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>Cultural</span>
+                </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Lost & Found">
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Lost & Found</span>
+                </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Important News">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Important News</span>
+                </li>
+                <li class="nav-item active create-btn" id="nav-create-btn" data-target="create-post">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create</span>
+                </li>
+            </ul>
+            <div class="nav-footer" style="justify-content: center;">
+                <button class="btn-icon logout-btn" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <header class="section-header" style="justify-content: flex-end;">
+                <div class="header-actions" style="display: flex; gap: 10px;">
+                    <button class="theme-toggle btn-icon"><i class="fa-regular fa-moon"></i></button>
+                    <!-- mobile logout is in mobile-top-bar -->
+                </div>
+            </header>
+
+            <div class="form-card glass-card">
+                <h2 id="page-title" class="feed-title">Create New Post</h2>
+                
+                <form id="create-post-form">
+                    <input type="text" id="post-title" class="glass-input-field" placeholder="Post Title" required>
+                    
+                    <select id="post-category" class="glass-input-field" required>
+                        <option value="" disabled selected>Select Category...</option>
+                        <option value="Important News">Important News</option>
+                        <option value="GNC News">GNC News</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Lost & Found">Lost & Found</option>
+                    </select>
+
+                    <textarea id="post-content" class="glass-input-field" rows="5" placeholder="Write your announcement here..." required></textarea>
+                    
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <label for="post-image" style="display: block; margin-bottom: 8px; color: var(--clr-text-muted);">Attach Image (Optional)</label>
+                        <input type="file" id="post-image" accept="image/*" class="glass-input-field" style="padding: 10px;">
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="btn btn-primary full-width">Publish Post</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="shared.js"></script>
+    <script type="module" src="create.js"></script>
+</body>
+</html>

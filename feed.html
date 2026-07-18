@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBuzz - Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="mobile-top-bar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>GNC INFORMATION</h2>
+        </div>
+        <button class="btn-icon logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </div>
+
+    <div id="app-view" class="view active-view">
+        <nav class="glass-nav">
+            <div class="nav-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>CampusBuzz</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-target="channel-feed" data-channel="GNC News">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>GNC News</span>
+                </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Cultural">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    <span>Cultural</span>
+                </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Lost & Found">
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Lost & Found</span>
+                </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Important News">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Important News</span>
+                </li>
+                <li class="nav-item create-btn" id="nav-create-btn" data-target="create-post">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create</span>
+                </li>
+            </ul>
+            <div class="nav-footer" style="justify-content: center;">
+                <button class="btn-icon logout-btn" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <section id="channel-feed" class="content-section active-section">
+                <header class="section-header">
+                    <div class="search-bar glass-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-input" placeholder="Search news or updates...">
+                    </div>
+                    <button class="theme-toggle btn-icon"><i class="fa-regular fa-moon"></i></button>
+                </header>
+
+                <div class="feed-container">
+                    <h2 class="feed-title" id="channel-title">GNC News</h2>
+                    <div id="dynamic-feed-container">
+                        <!-- Posts injected via Firebase -->
+                        <div class="empty-state">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            <p>Loading posts...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="shared.js"></script>
+    <script type="module" src="feed.js"></script>
+</body>
+</html>
