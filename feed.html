@@ -6,7 +6,7 @@
     <title>CampusBuzz - Feed</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
     <div class="blob blob-1"></div>
@@ -14,14 +14,19 @@
     <div class="blob blob-3"></div>
 
     <div class="mobile-top-bar">
-        <div class="nav-brand">
+        <div class="nav-brand" style="display: flex; align-items: center; gap: 10px;">
+            <button class="btn-icon menu-btn"><i class="fa-solid fa-bars"></i></button>
             <i class="fa-solid fa-graduation-cap"></i>
-            <h2>GNC INFORMATION</h2>
+            <h2>CampusBuzz</h2>
         </div>
-        <button class="btn-icon logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <div class="mobile-actions">
+            <button class="theme-toggle btn-icon"><i class="fa-regular fa-moon"></i></button>
+            <button class="btn-icon logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        </div>
     </div>
 
     <div id="app-view" class="view active-view">
+        <div class="mobile-overlay"></div>
         <nav class="glass-nav">
             <div class="nav-brand">
                 <i class="fa-solid fa-graduation-cap"></i>
@@ -44,6 +49,10 @@
                     <i class="fa-solid fa-star"></i>
                     <span>Important News</span>
                 </li>
+                <li class="nav-item" data-target="channel-feed" data-channel="Club & Activity">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Club & Activity</span>
+                </li>
                 <li class="nav-item create-btn" id="nav-create-btn" data-target="create-post">
                     <i class="fa-solid fa-plus"></i>
                     <span>Create</span>
@@ -57,12 +66,12 @@
         <main class="content-area">
             <section id="channel-feed" class="content-section active-section">
                 <header class="section-header">
-                    <div class="search-bar glass-input">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="search-input" placeholder="Search news or updates...">
-                    </div>
-                    <button class="theme-toggle btn-icon"><i class="fa-regular fa-moon"></i></button>
-                </header>
+                <div class="search-bar glass-input" style="flex: 1;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Search news or updates...">
+                </div>
+                <button class="theme-toggle btn-icon desktop-only" style="margin-left: 15px;"><i class="fa-regular fa-moon"></i></button>
+            </header>
 
                 <div class="feed-container">
                     <h2 class="feed-title" id="channel-title">GNC News</h2>
@@ -78,7 +87,7 @@
         </main>
     </div>
 
-    <script type="module" src="shared.js"></script>
-    <script type="module" src="feed.js"></script>
+    <script type="module" src="shared.js?v=4"></script>
+    <script type="module" src="feed.js?v=4"></script>
 </body>
 </html>

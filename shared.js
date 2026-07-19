@@ -40,25 +40,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fa-regular fa-sun"></i>';
-        }
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggles.forEach(t => {
+            const icon = t.querySelector('i');
+            if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+        });
+    }
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.body.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
-                themeToggle.innerHTML = '<i class="fa-regular fa-moon"></i>';
+                themeToggles.forEach(t => {
+                    const icon = t.querySelector('i');
+                    if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+                });
             } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
+                document.body.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
-                themeToggle.innerHTML = '<i class="fa-regular fa-sun"></i>';
+                themeToggles.forEach(t => {
+                    const icon = t.querySelector('i');
+                    if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+                });
             }
+        });
+    });
+
+    // Mobile Menu Toggle
+    const menuBtns = document.querySelectorAll('.menu-btn');
+    const glassNav = document.querySelector('.glass-nav');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+
+    if (glassNav && mobileOverlay) {
+        menuBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                glassNav.classList.toggle('open');
+                mobileOverlay.classList.toggle('open');
+            });
+        });
+
+        mobileOverlay.addEventListener('click', () => {
+            glassNav.classList.remove('open');
+            mobileOverlay.classList.remove('open');
         });
     }
 
@@ -66,11 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            const targetId = item.getAttribute('data-target');
-            if (targetId === 'channel-feed') {
-                const channel = encodeURIComponent(item.getAttribute('data-channel'));
-                window.location.href = `feed.html?channel=${channel}`;
-            } else if (targetId === 'create-post') {
+            // Close mobile menu if open
+            if (glassNav && glassNav.classList.contains('open')) {
+                glassNav.classList.remove('open');
+                mobileOverlay.classList.remove('open');
+            }
+
+            const channel = item.getAttribute('data-channel');
+            if (channel) {
+                window.location.href = `feed.html?channel=${encodeURIComponent(channel)}`;
+            } else if (item.classList.contains('create-btn') || item.getAttribute('data-target') === 'create-post') {
                 window.location.href = 'create.html';
             }
         });
