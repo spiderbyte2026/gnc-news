@@ -5,7 +5,8 @@ import { signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/fire
 const ADMIN_EMAILS = [
     "admin@college.edu",
     "testadmin@gmail.com",
-    "megalak766@gmail.com"
+    "megalak766@gmail.com",
+    "aaravofficial1234@gmail.com"
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
